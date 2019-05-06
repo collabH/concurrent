@@ -114,4 +114,18 @@
 >CountDownLatch详细看官方文档 核心方法是countDown()和await()  代码参考aqs的demo
 
 **Semaphore**
->核心方法 semaphore.acquire();semaphore.release();
+>核心方法 semaphore.acquire();semaphore.release(); 看demo代码和官方文档
+
+**ReentrantLock与锁**
+* ReentrantLock(可重入锁)和synchronized区别:
+    * 可重入性(都是可重入锁)
+    * 锁的实现方式
+    * 性能的区别
+    * 功能区别  1.便利性 2.ReentrantLock更加灵活和细粒度
+    * ReentrantLock独有功能
+        * 可指定是公平锁还是非公平锁
+        * 提供了一个Condition类，可以分组唤醒需要唤醒的线程
+        * 提供能够中断等待锁的线程的机制，lock.lockInterruptibly()
+        
+* 当只有少量竞争者的时候，synchronized更加适合
+* 多量竞争者时，但是线程的增长是可以预估的ReentrantLock更加合适

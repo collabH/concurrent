@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class SemaphoreExample3 {
@@ -19,7 +20,7 @@ public class SemaphoreExample3 {
             exec.execute(() -> {
                 try {
                     //尝试获取一个许可，获取了就是释放掉
-                    if (semaphore.tryAcquire()) {
+                    if (semaphore.tryAcquire(5, TimeUnit.SECONDS)) {
                         test(threadNum);
                         semaphore.release();
                     }
